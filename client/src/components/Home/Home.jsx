@@ -1,27 +1,40 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import "./Home.css";
 
 const Home = () => {
+  const [products, setProducts] = useState([]);
+  const URL = "https://dummyjson.com/products";
+  const fetchData = async () => {
+    const res = await fetch(URL);
+    const data = await res.json();
+    setProducts(data.products);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="home-container">
       <div className="product-container">
         <div className="products">
-          <div className="product">
-            <div className="product-img">
-              <img
-                src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D"
-                alt=""
-              />
-            </div>
-            <div className="product-details">
-              <h4 className="product-name">Apple</h4>
-              <p className="description">Description</p>
-              <div className="price">
-                <span>$9999</span>
-                <button className="add">Add to cart</button>
+          {products.map((product) => {
+            return (
+              <div className="product" key={product.id}>
+                <div className="product-img">
+                  <img src={product.images[0]} alt="Product Image" />
+                </div>
+                <div className="product-details">
+                  <h4 className="product-name">{product.brand}</h4>
+                  <p className="description">{product.description}</p>
+                  <div className="price">
+                    <span>${product.price}</span>
+                    <button className="add">Add to cart</button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </div>
