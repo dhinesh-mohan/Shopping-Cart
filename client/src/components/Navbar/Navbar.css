@@ -1,0 +1,38 @@
+.nav-container {
+  width: 100vw;
+  background-color: rgb(249, 230, 196);
+  height: 5rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 0 60px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.cart {
+  margin-right: 30px;
+}
+
+.count {
+  height: 20px;
+  width: 20px;
+  background-color: red;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 15px;
+  right: 85px;
+}
+
+.count > span {
+  font-weight: 600;
+}
