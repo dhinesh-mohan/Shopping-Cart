@@ -6,8 +6,11 @@ import { cartActions } from "../../store/cartSlice";
 
 const CartItems = () => {
   const cartList = useSelector((state) => state.cart.itemsList);
-  const total = useSelector((state) => state.cart.totalPrice);
   const showCart = useSelector((state) => state.cart.showCart);
+  let total = 0;
+  cartList.forEach((element) => {
+    total += element.totalPrice;
+  });
 
   const dispatch = useDispatch();
 

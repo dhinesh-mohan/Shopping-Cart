@@ -17,6 +17,7 @@
 
 .cart {
   margin-right: 30px;
+  cursor: pointer;
 }
 
 .count {
